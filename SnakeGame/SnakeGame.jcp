@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+	<settings>
+		<label>SnakeGame</label>
+		<root_path>\</root_path>
+		<output_path>\</output_path>
+		<source_path>\</source_path>
+		<jdkprofile_ref>JDK version 1.6.0_18</jdkprofile_ref>
+		<compiler_ref/>
+		<ant_ref/>
+	</settings>
+	<ant_events/>
+	<run_items/>
+	<runtimes>
+		<runtime>
+			<label>&lt;Default&gt;</label>
+			<application_ref/>
+			<applet_ref/>
+			<debugger_ref/>
+			<param/>
+			<run>SnakeGame</run>
+			<verify>true</verify>
+		</runtime>
+	</runtimes>
+	<libraries/>
+	<files>
+		<include>
+			<fileitem>
+				<path>AddNoBoxesPickUp.java</path>
+			</fileitem>
+			<fileitem>
+				<path>NoCollisionPickUp.java</path>
+			</fileitem>
+			<fileitem>
+				<path>NoCollisionToWallPickUp.java</path>
+			</fileitem>
+			<fileitem>
+				<path>PickUp.java</path>
+			</fileitem>
+			<fileitem>
+				<path>PointPickUp.java</path>
+			</fileitem>
+			<fileitem>
+				<path>RandomPickUp.java</path>
+			</fileitem>
+			<fileitem>
+				<path>Snake.java</path>
+			</fileitem>
+			<fileitem>
+				<path>SnakeGame.java</path>
+			</fileitem>
+			<fileitem>
+				<path>SnakePanel.java</path>
+			</fileitem>
+			<fileitem>
+				<path>SpecialPickUp.java</path>
+			</fileitem>
+			<fileitem>
+				<path>SpecialPickUpManager.java</path>
+			</fileitem>
+		</include>
+	</files>
+	<tasks/>
+</project>
