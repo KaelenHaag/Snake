@@ -21,7 +21,7 @@
 			<path>SnakePanel.java</path>
 			<source>true</source>
 			<index>1</index>
-			<active>false</active>
+			<active>true</active>
 		</docitem>
 		<docitem>
 			<path>Snake.java</path>
@@ -75,7 +75,7 @@
 			<path>SpecialPickUpManager.java</path>
 			<source>true</source>
 			<index>10</index>
-			<active>true</active>
+			<active>false</active>
 		</docitem>
 	</open_files>
 </workspace_user>

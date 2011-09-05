@@ -41,9 +41,8 @@ public class SnakePanel extends JPanel implements Runnable
 
   	private long framesSkipped = 0L;
   	private long totalFramesSkipped = 0L;
-  	private double upsStore[];
-  	private double averageUPS = 0.0;
-
+  	
+  	private long moveCount = 0;
 
   	private DecimalFormat df = new DecimalFormat("0.##");  // 2 dp
   	private DecimalFormat timedf = new DecimalFormat("0.####");  // 4 dp
@@ -94,11 +93,9 @@ public class SnakePanel extends JPanel implements Runnable
 		
 		// initialise timing elements
     	fpsStore = new double[NUM_FPS];
-    	upsStore = new double[NUM_FPS];
     	for (int i=0; i < NUM_FPS; i++) 
     	{
       		fpsStore[i] = 0.0;
-      		upsStore[i] = 0.0;
     	}
 	}
 	
@@ -163,17 +160,6 @@ public class SnakePanel extends JPanel implements Runnable
   			}
   		};
   		
-  		Action testMove = new AbstractAction()
-  		{
-  			public void actionPerformed(ActionEvent e)
-  			{
-  				bob.changeDirection(Snake.right);
-  				bob.changeDirection(Snake.up);
-  				bob.changeDirection(Snake.left);
-  				bob.changeDirection(Snake.down);
-  			}
-  		};
-  		
   		getInputMap().put(KeyStroke.getKeyStroke("UP"),"up");
   		getInputMap().put(KeyStroke.getKeyStroke("DOWN"),"down");
   		getInputMap().put(KeyStroke.getKeyStroke("RIGHT"),"right");
@@ -199,12 +185,16 @@ public class SnakePanel extends JPanel implements Runnable
   		{
   			animator = new Thread(this);
   			animator.start();
-  			new Timer(64, new AbstractAction() // gets rid of movement being relient on FPS, easily adjustable if needed.
+  			new Timer(63, new AbstractAction() // gets rid of movement being relient on FPS, easily adjustable if needed.
   			{
   				public void actionPerformed(ActionEvent e)
   				{
   					if(!isPaused && !gameOver)
+  					{
+  						//System.out.println("GOING TO MOVE NOW");
   						bob.move();
+  						moveCount++;
+  					}
   				}
   			}
   			).start();
@@ -290,7 +280,6 @@ public class SnakePanel extends JPanel implements Runnable
 		
 		while(running)
 		{
-			gameUpdate();
 			gameRender();
 			paintScreen();
 			
@@ -325,7 +314,6 @@ public class SnakePanel extends JPanel implements Runnable
 			while((excess > period) && (skips < MAX_FRAME_SKIPS))
 			{
 				excess -= period;
-				gameUpdate();
 				skips++;
 			}
 			framesSkipped += skips;
@@ -336,16 +324,7 @@ public class SnakePanel extends JPanel implements Runnable
 		printStats();
 		System.exit(0);
 	}
-	
-	//Dont really need this but dont really feel like messing with it
-	private void gameUpdate()
-	{
-		if(!isPaused && !gameOver)
-		{
-			//bob.move();
-		}
-	}
-	
+
 	private void gameRender()
 	{
 		if(dbImage == null)
@@ -366,7 +345,7 @@ public class SnakePanel extends JPanel implements Runnable
 		dbg.setColor(Color.GREEN);
 		dbg.setFont(font);
 		
-		dbg.drawString("Average FPS/UPS: " + df.format(averageFPS) + ", " + df.format(averageUPS), 20, 25);
+		dbg.drawString("Average FPS: " + df.format(averageFPS), (PWIDTH - metrics.stringWidth("Average FPS: " + df.format(averageFPS))) / 2, 25);
 		
 		dbg.setColor(Color.BLACK);
 		
@@ -487,32 +466,25 @@ public class SnakePanel extends JPanel implements Runnable
       totalFramesSkipped += framesSkipped;
 
       double actualFPS = 0;     // calculate the latest FPS and UPS
-      double actualUPS = 0;
+      //double actualUPS = 0;
       if (totalElapsedTime > 0) {
         actualFPS = (((double)frameCount / totalElapsedTime) * 1000000000L);
-        actualUPS = (((double)(frameCount + totalFramesSkipped) / totalElapsedTime) 
-                                                             * 1000000000L);
       }
 
       // store the latest FPS and UPS
       fpsStore[ (int)statsCount%NUM_FPS ] = actualFPS;
-      upsStore[ (int)statsCount%NUM_FPS ] = actualUPS;
       statsCount = statsCount+1;
 
       double totalFPS = 0.0;     // total the stored FPSs and UPSs
-      double totalUPS = 0.0;
       for (int i=0; i < NUM_FPS; i++) {
         totalFPS += fpsStore[i];
-        totalUPS += upsStore[i];
       }
 
-      if (statsCount < NUM_FPS) { // obtain the average FPS and UPS
+      if (statsCount < NUM_FPS) { // obtain the average FPS
         averageFPS = totalFPS/statsCount;
-        averageUPS = totalUPS/statsCount;
       }
       else {
         averageFPS = totalFPS/NUM_FPS;
-        averageUPS = totalUPS/NUM_FPS;
       }
 /*
       System.out.println(timedf.format( (double) statsInterval/1000000000L) + " " + 
@@ -520,8 +492,7 @@ public class SnakePanel extends JPanel implements Runnable
 			        df.format(timingError) + "% " + 
                     frameCount + "c " +
                     framesSkipped + "/" + totalFramesSkipped + " skip; " +
-                    df.format(actualFPS) + " " + df.format(averageFPS) + " afps; " + 
-                    df.format(actualUPS) + " " + df.format(averageUPS) + " aups" );
+                    df.format(actualFPS) + " " + df.format(averageFPS) + " afps;");
 */
       framesSkipped = 0;
       prevStatsTime = timeNow;
@@ -534,7 +505,7 @@ public class SnakePanel extends JPanel implements Runnable
   {
     System.out.println("Frame Count/Loss: " + frameCount + " / " + totalFramesSkipped);
 	System.out.println("Average FPS: " + df.format(averageFPS));
-	System.out.println("Average UPS: " + df.format(averageUPS));
+	System.out.println("Total moves: " + moveCount);
     System.out.println("Time Spent: " + timeSpentInGame + " secs");
     System.out.println("Current Score: " + sg.getScore());
   }  // end of printStats()

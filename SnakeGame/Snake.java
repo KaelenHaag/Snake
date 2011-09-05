@@ -31,7 +31,7 @@ public class Snake
 	private int boxesToBeAdded = 0;
 	
 	private ArrayDeque<Integer> moveQueue = new ArrayDeque<Integer>();
-	 
+	
 	public Snake(int PWIDTH, int PHEIGHT, SnakeGame sg, SnakePanel sp) 
 	{
 		this.PWIDTH = PWIDTH;
@@ -57,7 +57,7 @@ public class Snake
 		
 		if(boxesToBeAdded == 0)
 		{
-			snakeBody.subtract(new Area(snakeBoxes.get(snakeBoxes.size() - 1))); // subtract the tail from the snake
+				snakeBody.subtract(new Area(snakeBoxes.get(snakeBoxes.size() - 1))); // subtract the tail from the snake
 		}
 		else
 		{
@@ -87,10 +87,8 @@ public class Snake
 				snakeBoxes.get(0).translate(-10, 0);
 				break;
 		}
-		if(hasCollisionToSelf)
-		{	
+		if(hasCollisionToSelf)	
 			isCollidingWithSelf();
-		}
 		hasHitWall();
 		snakeBody.add(new Area(snakeBoxes.get(0)));
 		hasHitPickUp();
@@ -99,7 +97,9 @@ public class Snake
 	public void isCollidingWithSelf()
 	{
 		if(snakeBody.intersects((Rectangle2D)snakeBoxes.get(0)))
-			sp.setGameOver();
+		{
+				sp.setGameOver();
+		}
 	}
 	
 	public void hasHitPickUp()
