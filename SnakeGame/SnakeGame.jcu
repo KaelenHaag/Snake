@@ -77,5 +77,11 @@
 			<index>10</index>
 			<active>false</active>
 		</docitem>
+		<docitem>
+			<path>about:blank</path>
+			<source>false</source>
+			<index>11</index>
+			<active>false</active>
+		</docitem>
 	</open_files>
 </workspace_user>
