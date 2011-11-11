@@ -5,4 +5,7 @@ HI!
 Simple Snake Game in Java that I made during the summer
 I decided to add power ups also.
 Going into Senior year of high school and I have 3 years of coding experience in Java
-main method is located in SnakeGame.java just open in favorite IDE and click run.
+main method is located in SnakeGame.java
+
+//Some code used from Andrew Davison's book Killer Game Programming in Java
+//Website of book http://fivedots.coe.psu.ac.th/~ad/jg

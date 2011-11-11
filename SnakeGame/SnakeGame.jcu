@@ -15,13 +15,13 @@
 			<path>SnakeGame.java</path>
 			<source>true</source>
 			<index>0</index>
-			<active>false</active>
+			<active>true</active>
 		</docitem>
 		<docitem>
 			<path>SnakePanel.java</path>
 			<source>true</source>
 			<index>1</index>
-			<active>true</active>
+			<active>false</active>
 		</docitem>
 		<docitem>
 			<path>Snake.java</path>

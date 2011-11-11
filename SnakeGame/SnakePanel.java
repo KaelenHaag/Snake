@@ -1,10 +1,12 @@
+//Kaelen Haag
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.text.DecimalFormat;
 import java.awt.event.KeyEvent;
 
-//Some code (some rendering, stat reporting, and overly commented stuff) used from the book "Killer Game Programming in Java" by Andrew Davison.
+//Some code (some rendering, stat reporting, and overly commented stuff) used from Andrew Davison's book Killer Game Programming in Java
+//Website of book http://fivedots.coe.psu.ac.th/~ad/jg
 //The rest (game logic, some rendering, others) is done by me and me only. 
 public class SnakePanel extends JPanel implements Runnable
 {

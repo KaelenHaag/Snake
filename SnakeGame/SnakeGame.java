@@ -1,10 +1,16 @@
+//Kaelen Haag
+
+//Some code (some rendering, stat reporting, and overly commented stuff) used from Andrew Davison's book Killer Game Programming in Java
+//Website of book http://fivedots.coe.psu.ac.th/~ad/jg
+//The rest (game logic, some rendering, others) is done by me and me only. 
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class SnakeGame extends JFrame implements WindowListener
 {
-	private static int DEFAULT_FPS = 80;
+	private static int DEFAULT_FPS = 100;
 	
 	private SnakePanel sp;
 	private JTextField scoreJTextField; //Current score of the game
