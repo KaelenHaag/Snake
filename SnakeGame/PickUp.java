@@ -1,4 +1,3 @@
-//Kaelen Haag
 import java.awt.*;
 import java.util.Random;
 import java.awt.geom.*;
@@ -10,12 +9,9 @@ public class PickUp
 	
 	Rectangle currentRectangle;
 	
-	private int boxesToAdd = 3;
-	private int pointValue = 10;
+	protected SnakePanel sp;
 	
-	private SnakePanel sp;
-	
-	private Random generator = new Random();
+	protected Random generator = new Random();
 	
 	public PickUp(SnakePanel sp) 
 	{
@@ -42,16 +38,6 @@ public class PickUp
 	public Rectangle getCurrentRectangle()
 	{
 		return currentRectangle;
-	}
-	
-	public int getBoxesToAdd()
-	{
-		return boxesToAdd;
-	}
-	
-	public int getPointValue()
-	{
-		return pointValue;
 	}
 	
 	public void setColor(Color newColor)

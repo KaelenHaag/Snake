@@ -1,6 +1,6 @@
-//Kaelen Haag
-import java.awt.*;
-import java.util.*;
+import java.awt.Graphics2D;
+import java.awt.Color;
+import java.util.Random;
 
 public class RandomPickUp extends SpecialPickUp
 {
@@ -13,8 +13,8 @@ public class RandomPickUp extends SpecialPickUp
 	
 	public void doPickUpAbility()
 	{
-		getManager().chooseType();
-		getManager().getSpawnedPickUp().doPickUpAbility();
+		manager.chooseType();
+		manager.getSpawnedPickUp().doPickUpAbility();
 	}
 	
 	public void draw(Graphics2D g)

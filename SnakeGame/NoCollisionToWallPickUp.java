@@ -1,7 +1,6 @@
-//Kaelen Haag
-import java.awt.*;
-import java.util.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.util.TimerTask;
+import javax.swing.JTextField;
 
 //This pickup disables the snake from running into the wall. Places head on the opposite of the side that was entered.
 public class NoCollisionToWallPickUp extends SpecialPickUp 
@@ -16,24 +15,24 @@ public class NoCollisionToWallPickUp extends SpecialPickUp
 	
 	public void doPickUpAbility()
 	{
-		getSnakePanel().getSnake().setCollisionToWall(false);
-		getSnakePanel().getSnake().setColor(Color.CYAN);
-		getTimer().schedule(new TimerTask()
+		sp.getSnake().setCollisionToWall(false);
+		sp.getSnake().setColor(Color.CYAN);
+		lifeTimer.schedule(new TimerTask()
 		{
 			int tick = 0;
 			public void run()
 			{
-				if(!getSnakePanel().isPaused())
+				if(!sp.isPaused())
 				{
 					tick++;
 					timeJTextField.setText(Integer.toString(LIFETIME - tick));
 					if(tick >= LIFETIME)
 					{
-						getSnakePanel().getSnake().setCollisionToWall(true);
-						getSnakePanel().getSnake().setColor(Color.RED);
-						getManager().destroyCurrentSpecialPickUp();
-						getTimer().cancel();
-						getTimer().purge();
+						sp.getSnake().setCollisionToWall(true);
+						sp.getSnake().setColor(Color.RED);
+						manager.destroyCurrentSpecialPickUp();
+						lifeTimer.cancel();
+						lifeTimer.purge();
 				
 					}
 				}

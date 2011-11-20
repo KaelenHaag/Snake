@@ -1,5 +1,4 @@
-//Kaelen Haag
-import java.util.*;
+import java.util.Timer;
 import java.awt.geom.*;
 import javax.swing.JTextField;
 
@@ -8,10 +7,10 @@ public class SpecialPickUp extends PickUp
 {
 	private final int LIFETIME = 15;
 	
-	private Timer lifeTimer = new Timer(true);
-	private SpecialPickUpManager manager;
+	protected Timer lifeTimer = new Timer(true);
+	protected SpecialPickUpManager manager;
 	//Reference to pickUpEffectDurationJTextField in SnakeGame. So the pickup can notify the player of the time left for the active pickup.
-	final JTextField timeJTextField;
+	protected final JTextField timeJTextField;
 	
 	public SpecialPickUp(SnakePanel sp, SpecialPickUpManager manager)
 	{

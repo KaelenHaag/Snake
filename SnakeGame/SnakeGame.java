@@ -1,9 +1,3 @@
-//Kaelen Haag
-
-//Some code (some rendering, stat reporting, and overly commented stuff) used from Andrew Davison's book Killer Game Programming in Java
-//Website of book http://fivedots.coe.psu.ac.th/~ad/jg
-//The rest (game logic, some rendering, others) is done by me and me only. 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -26,6 +20,13 @@ public class SnakeGame extends JFrame implements WindowListener
 		
 		addWindowListener(this);
 		pack();
+		
+		//Code used from http://www.java2s.com/Code/Java/Swing-JFC/CenterOnScreen.htm
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); 
+		Dimension frameSize = getSize();
+		setLocation((screenSize.width - frameSize.width) / 2,
+					(screenSize.height - frameSize.height) / 2);
+		
 		setResizable(false);
 		setVisible(true);
 	}

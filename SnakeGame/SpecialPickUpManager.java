@@ -1,4 +1,3 @@
-//Kaelen Haag
 import java.util.*;
 
 public class SpecialPickUpManager 

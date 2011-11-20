@@ -1,7 +1,6 @@
-//Kaelen Haag
-import java.awt.*;
-import java.util.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.util.TimerTask;
+import javax.swing.JTextField;
 
 //This pickup disables the snakes collision so it can't collide with itself for the specified time period.
 public class NoCollisionPickUp extends SpecialPickUp
@@ -16,24 +15,24 @@ public class NoCollisionPickUp extends SpecialPickUp
 	
 	public void doPickUpAbility()
 	{
-		getSnakePanel().getSnake().setCollisionToSelf(false);
-		getSnakePanel().getSnake().setColor(Color.GREEN);
-		getTimer().schedule(new TimerTask()
+		sp.getSnake().setCollisionToSelf(false);
+		sp.getSnake().setColor(Color.GREEN);
+		lifeTimer.schedule(new TimerTask()
 		{
 			int tick = 0;
 			public void run()
 			{
-				if(!getSnakePanel().isPaused())
+				if(!sp.isPaused())
 				{
 					tick++;
 					timeJTextField.setText(Integer.toString(LIFETIME - tick));
 					if(tick >= LIFETIME)
 					{
-						getSnakePanel().getSnake().setCollisionToSelf(true);
-						getSnakePanel().getSnake().setColor(Color.RED);
-						getManager().destroyCurrentSpecialPickUp();
-						getTimer().cancel();
-						getTimer().purge();
+						sp.getSnake().setCollisionToSelf(true);
+						sp.getSnake().setColor(Color.RED);
+						manager.destroyCurrentSpecialPickUp();
+						lifeTimer.cancel();
+						lifeTimer.purge();
 				
 					}
 				}

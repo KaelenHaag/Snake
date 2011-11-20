@@ -1,7 +1,6 @@
-//Kaelen Haag
-import java.awt.*;
-import java.util.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.util.TimerTask;
+import javax.swing.JTextField;
 
 //This pickup disables the snake from gaining boxes after picking up a PointPickUp. 
 public class AddNoBoxesPickUp extends SpecialPickUp 
@@ -16,24 +15,24 @@ public class AddNoBoxesPickUp extends SpecialPickUp
 	
 	public void doPickUpAbility()
 	{
-		getSnakePanel().getSnake().setShouldAddBoxes(false);
-		getSnakePanel().getSnake().setColor(Color.MAGENTA);
-		getTimer().schedule(new TimerTask()
+		sp.getSnake().setShouldAddBoxes(false);
+		sp.getSnake().setColor(Color.MAGENTA);
+		lifeTimer.schedule(new TimerTask()
 		{
 			int tick = 0;
 			public void run()
 			{
-				if(!getSnakePanel().isPaused())
+				if(!sp.isPaused())
 				{
 					tick++;
 					timeJTextField.setText(Integer.toString(LIFETIME - tick));
 					if(tick >= LIFETIME)
 					{
-						getSnakePanel().getSnake().setShouldAddBoxes(true);
-						getSnakePanel().getSnake().setColor(Color.RED);
-						getManager().destroyCurrentSpecialPickUp();
-						getTimer().cancel();
-						getTimer().purge();
+						sp.getSnake().setShouldAddBoxes(true);
+						sp.getSnake().setColor(Color.RED);
+						manager.destroyCurrentSpecialPickUp();
+						lifeTimer.cancel();
+						lifeTimer.purge();
 				
 					}
 				}

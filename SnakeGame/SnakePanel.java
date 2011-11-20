@@ -1,12 +1,10 @@
-//Kaelen Haag
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.text.DecimalFormat;
 import java.awt.event.KeyEvent;
 
-//Some code (some rendering, stat reporting, and overly commented stuff) used from Andrew Davison's book Killer Game Programming in Java
-//Website of book http://fivedots.coe.psu.ac.th/~ad/jg
+//Some code (some rendering, stat reporting, and overly commented stuff) used from the book "Killer Game Programming in Java" by Andrew Davison.
 //The rest (game logic, some rendering, others) is done by me and me only. 
 public class SnakePanel extends JPanel implements Runnable
 {
@@ -493,14 +491,6 @@ public class SnakePanel extends JPanel implements Runnable
       else {
         averageFPS = totalFPS/NUM_FPS;
       }
-/*
-      System.out.println(timedf.format( (double) statsInterval/1000000000L) + " " + 
-                    timedf.format((double) realElapsedTime/1000000000L) + "s " + 
-			        df.format(timingError) + "% " + 
-                    frameCount + "c " +
-                    framesSkipped + "/" + totalFramesSkipped + " skip; " +
-                    df.format(actualFPS) + " " + df.format(averageFPS) + " afps;");
-*/
       framesSkipped = 0;
       prevStatsTime = timeNow;
       statsInterval = 0L;   // reset

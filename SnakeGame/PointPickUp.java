@@ -1,5 +1,4 @@
-//Kaelen Haag
-import java.awt.*;
+import java.awt.Color;
 import java.util.Random;
 import java.awt.geom.*;
 
@@ -31,7 +30,7 @@ public class PointPickUp extends PickUp
 	
 	public void doPickUpAbility()
 	{
-		getSnakePanel().getSnake().addPoints(POINTSTOADD);
-		getSnakePanel().getSnake().addBoxes(BOXESTOADD);
+		sp.getSnake().addPoints(POINTSTOADD);
+		sp.getSnake().addBoxes(BOXESTOADD);
 	}
 }
